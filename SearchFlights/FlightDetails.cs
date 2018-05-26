@@ -2,7 +2,7 @@
 
 namespace SearchFlights
 {
-    public class FligtDetails
+    public class FlightDetails
     {
         public string Origin { get; set; }
 

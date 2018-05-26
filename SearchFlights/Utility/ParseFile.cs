@@ -8,11 +8,11 @@ namespace SearchFlights.Utility
 {
     public class ParseFile
     {
-        public static List<FligtDetails> ParseFlightDetailsFile(string path)
+        public static List<FlightDetails> ParseFlightDetailsFile(string path)
         {
             string line;
             char split = ',';
-            List<FligtDetails> flights = new List<FligtDetails>();
+            List<FlightDetails> flights = new List<FlightDetails>();
             FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
             using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
@@ -24,16 +24,16 @@ namespace SearchFlights.Utility
                 }
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    FligtDetails flightDetail = parseLineToFlightDetails(line, split);
+                    FlightDetails flightDetail = parseLineToFlightDetails(line, split);
                     flights.Add(flightDetail);
                 }
             }
             return flights;
         }
 
-        private static FligtDetails parseLineToFlightDetails(string line, char split)
+        private static FlightDetails parseLineToFlightDetails(string line, char split)
         {
-            FligtDetails flightDetail = new FligtDetails();
+            FlightDetails flightDetail = new FlightDetails();
             string[] props = line.Split(split);
             DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
             flightDetail.Origin = props[0];
