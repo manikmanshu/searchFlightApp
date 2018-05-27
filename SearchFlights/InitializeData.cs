@@ -15,9 +15,9 @@ namespace SearchFlights
         private List<IFlightDetails> flights;
         private HashSet<IFlightDetails> flightSet = new HashSet<IFlightDetails>(new FlightDetailEqualityComparer());
 
-        private const string File1 = @"..\..\Provider1.txt";
-        private const string File2 = @"..\..\Provider2.txt";
-        private const string File3 = @"..\..\Provider3.txt";
+        private const string File1 = @"Provider1.txt";
+        private const string File2 = @"Provider2.txt";
+        private const string File3 = @"Provider3.txt";
 
         #endregion
 

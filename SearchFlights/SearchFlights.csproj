@@ -68,6 +68,16 @@
     <Content Include="Provider1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist $(ProjectDir)bin\Release\ mkdir $(ProjectDir)bin\Release\
+copy /Y "$(ProjectDir)Provider1.txt" "$(ProjectDir)bin\Release\Provider1.txt"
+copy /Y "$(ProjectDir)Provider2.txt" "$(ProjectDir)bin\Release\Provider2.txt"
+copy /Y "$(ProjectDir)Provider3.txt" "$(ProjectDir)bin\Release\Provider3.txt"
+if not exist $(ProjectDir)bin\Debug\ mkdir $(ProjectDir)bin\Debug\
+copy /Y "$(ProjectDir)Provider1.txt" "$(ProjectDir)bin\Debug\Provider1.txt"
+copy /Y "$(ProjectDir)Provider2.txt" "$(ProjectDir)bin\Debug\Provider2.txt"
+copy /Y "$(ProjectDir)Provider3.txt" "$(ProjectDir)bin\Debug\Provider3.txt"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
