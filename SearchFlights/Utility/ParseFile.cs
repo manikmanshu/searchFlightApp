@@ -6,13 +6,21 @@ using System.Text;
 
 namespace SearchFlights.Utility
 {
+    /// <summary>
+    /// Parse file utility class
+    /// </summary>
     public class ParseFile
     {
-        public static List<FlightDetails> ParseFlightDetailsFile(string path)
+        /// <summary>
+        /// Parse given file for flight details
+        /// </summary>
+        /// <param name="path">file path</param>
+        /// <returns>List<IFlightDetails></returns>
+        public static List<IFlightDetails> ParseFlightDetailsFile(string path)
         {
             string line;
             char split = ',';
-            List<FlightDetails> flights = new List<FlightDetails>();
+            List<IFlightDetails> flights = new List<IFlightDetails>();
             FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
             using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
@@ -24,16 +32,22 @@ namespace SearchFlights.Utility
                 }
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    FlightDetails flightDetail = parseLineToFlightDetails(line, split);
+                    IFlightDetails flightDetail = parseLineToFlightDetails(line, split);
                     flights.Add(flightDetail);
                 }
             }
             return flights;
         }
 
-        private static FlightDetails parseLineToFlightDetails(string line, char split)
+        /// <summary>
+        /// Parse file line to create Flight details model
+        /// </summary>
+        /// <param name="line">string</param>
+        /// <param name="split">split character</param>
+        /// <returns></returns>
+        private static IFlightDetails parseLineToFlightDetails(string line, char split)
         {
-            FlightDetails flightDetail = new FlightDetails();
+            IFlightDetails flightDetail = new FlightDetails();
             string[] props = line.Split(split);
             DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
             flightDetail.Origin = props[0];
