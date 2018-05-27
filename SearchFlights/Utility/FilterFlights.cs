@@ -19,7 +19,7 @@ namespace SearchFlights
         {
             List<IFlightDetails> filtered = flights
                 .Where(flight => flight.Origin.Equals(cmdOptions.Origin) && flight.Destination.Equals(cmdOptions.Destination))
-                .Distinct()
+                .OrderBy(flight => flight.Price).ThenBy(flight => flight.DepartureTime)                
                 .ToList();
 
             return filtered;
