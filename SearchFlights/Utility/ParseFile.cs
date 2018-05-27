@@ -9,14 +9,14 @@ namespace SearchFlights.Utility
     /// <summary>
     /// Parse file utility class
     /// </summary>
-    public class ParseFile
+    public static class ParseFile
     {
         /// <summary>
         /// Parse given file for flight details
         /// </summary>
         /// <param name="path">file path</param>
         /// <returns>List<IFlightDetails></returns>
-        public static List<IFlightDetails> ParseFlightDetailsFile(string path)
+        public static IList<IFlightDetails> ParseFlightDetailsFile(string path)
         {
             string line;
             char split = ',';
@@ -52,7 +52,7 @@ namespace SearchFlights.Utility
             DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
             flightDetail.Origin = props[0];
             flightDetail.Destination = props[2];
-            flightDetail.Price = Double.Parse(props[4], NumberStyles.Currency);
+            flightDetail.Price = Double.Parse(props[4], NumberStyles.Currency, CultureInfo.CurrentCulture);
 
             DateTime date;
 

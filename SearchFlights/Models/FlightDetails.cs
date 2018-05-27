@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace SearchFlights
 {
@@ -35,16 +36,16 @@ namespace SearchFlights
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("{0} {1} {2} {3} {4}", Origin, DepartureTime, Destination, DestinationTime, Price);
+            return String.Format(CultureInfo.CurrentCulture,"{0} {1} {2} {3} {4}", Origin, DepartureTime, Destination, DestinationTime, Price);
         }
 
-        public override bool Equals(Object other)
+        public override bool Equals(Object obj)
         {
-            if (other.GetType() != typeof(FlightDetails))
+            if (obj.GetType() != typeof(FlightDetails))
             {
                 return false;
             }
-            FlightDetails fd = (other as FlightDetails);
+            FlightDetails fd = (obj as FlightDetails);
             return Origin.Equals(fd.Origin) &&
                 Destination.Equals(fd.Destination) &&
                 Price == fd.Price &&

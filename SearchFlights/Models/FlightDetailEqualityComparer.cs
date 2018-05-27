@@ -21,11 +21,11 @@ namespace SearchFlights
         /// <summary>
         /// Implements GetHashCode Method
         /// </summary>
-        /// <param name="flightDetails">IFlightDetails</param>
+        /// <param name="obj">IFlightDetails</param>
         /// <returns>int</returns>
-        public int GetHashCode(IFlightDetails flightDetails)
+        public int GetHashCode(IFlightDetails obj)
         {
-            return flightDetails.ToString().GetHashCode();
+            return obj.ToString().GetHashCode();
         }
     }
 }

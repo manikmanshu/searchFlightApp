@@ -3,7 +3,7 @@ using CommandLine.Text;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-
+[assembly: CLSCompliant(true)]
 namespace SearchFlights
 {
     class Program
@@ -59,7 +59,7 @@ namespace SearchFlights
         /// <param name="cmdOptions"></param>
         static void ExecuteQuery(CommandLineOptions cmdOptions)
         {
-            List<IFlightDetails> filteredFlights = FilterFlights.GetFlights(initializeData.GetFlights(), cmdOptions);
+            IList<IFlightDetails> filteredFlights = FilterFlights.GetFlights(initializeData.Flights, cmdOptions);
             if (filteredFlights.Count == 0)
             {
                 Console.WriteLine("No Flights Found for {0} --> {1}", cmdOptions.Origin, cmdOptions.Destination);
@@ -71,7 +71,7 @@ namespace SearchFlights
                                   cmdOptions.Destination,
                                   fd.DepartureTime.ToString("M/dd/yyyy h:mm:ss", CultureInfo.InvariantCulture),
                                   fd.DestinationTime.ToString("M/dd/yyyy h:mm:ss", CultureInfo.InvariantCulture),
-                                  fd.Price.ToString("0.00"));
+                                  fd.Price.ToString("0.00", CultureInfo.CurrentCulture));
             }
         }        
     }

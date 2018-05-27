@@ -15,7 +15,7 @@ namespace SearchFlights
         /// <param name="flights">list of IFlightDetails</param>
         /// <param name="cmdOptions">CommandLineOptions</param>
         /// <returns>List<IFlightDetails></returns>
-        public static List<IFlightDetails> GetFlights(List<IFlightDetails> flights, CommandLineOptions cmdOptions)
+        public static IList<IFlightDetails> GetFlights(IList<IFlightDetails> flights, CommandLineOptions cmdOptions)
         {
             List<IFlightDetails> filtered = flights
                 .Where(flight => flight.Origin.Equals(cmdOptions.Origin) && flight.Destination.Equals(cmdOptions.Destination))

@@ -12,7 +12,7 @@ namespace SearchFlights
     {
         #region Private fields
 
-        private List<IFlightDetails> flights;
+        private IList<IFlightDetails> flights;
         private HashSet<IFlightDetails> flightSet = new HashSet<IFlightDetails>(new FlightDetailEqualityComparer());
 
         private const string File1 = @"Provider1.txt";
@@ -36,22 +36,26 @@ namespace SearchFlights
         /// InitializeData
         /// </summary>
         /// <param name="flights">List<IFlightDetails> flights</param>
-        public InitializeData(List<IFlightDetails> flights)
+        public InitializeData(IList<IFlightDetails> flights)
         {
             this.flights = flights;
         }
 
         #endregion
 
-        #region Public Methods
         /// <summary>
         /// Get flights
         /// </summary>
         /// <returns>List<IFlightDetails></returns>
-        public List<IFlightDetails> GetFlights()
+        public IList<IFlightDetails> Flights
         {
-            return this.flights;
+            get
+            {
+                return this.flights;
+            }
         }
+
+        #region Public Methods
 
         /// <summary>
         /// Parse files from Flights details data
@@ -71,7 +75,7 @@ namespace SearchFlights
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public List<IFlightDetails> ParseAFile(string fileName)
+        public static IList<IFlightDetails> ParseAFile(string fileName)
         {
             return ParseFile.ParseFlightDetailsFile(Path.GetFullPath(fileName));
         }
@@ -84,7 +88,7 @@ namespace SearchFlights
         /// Add fight in a set helper method
         /// </summary>
         /// <param name="flights"></param>
-        private void AddFlightInASet(List<IFlightDetails> flights)
+        private void AddFlightInASet(IList<IFlightDetails> flights)
         {
             foreach (IFlightDetails fd in flights)
             {
