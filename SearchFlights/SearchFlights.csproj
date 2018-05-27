@@ -48,7 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandLineOptions.cs" />
-    <Compile Include="FlightDetails.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="InitializeData.cs" />
+    <Compile Include="Models\FlightDetailEqualityComparer.cs" />
+    <Compile Include="Utility\FilterFlights.cs" />
+    <Compile Include="Models\FlightDetails.cs" />
+    <Compile Include="Models\IFlightDetails.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ParseFile.cs" />
