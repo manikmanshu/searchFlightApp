@@ -40,6 +40,7 @@ namespace SearchFlights
                 ExecuteQuery(cmdOptions);
             }
 
+            Console.WriteLine("Press enter key to exit");
             Console.Read();
         }
 
